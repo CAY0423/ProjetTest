@@ -9,6 +9,7 @@ export class HomePage{
     readonly buttonSearch : Locator;
     readonly buttonCategory : Locator;
     readonly buttonSignUp : Locator;
+    readonly optionList : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -17,6 +18,7 @@ export class HomePage{
         this.searchBar = page.getByPlaceholder('Rechercher Amazon.fr');
         this.buttonSearch = page.locator('#nav-search-submit-button');
         this.buttonCategory = page.locator('#nav-search-dropdown-card');
+        this.optionList = page.locator('#searchDropdownBox');
         this.buttonSignUp = page.getByRole('link', { name : 'Commencer ici.' });
     }
 
@@ -27,5 +29,15 @@ export class HomePage{
     async create(){
         await this.buttonLog.blur();
         await this.buttonSignUp.click();
+    }
+
+    async selectCatagory(){
+        await this.buttonCategory.click();
+        await this.optionList.selectOption({ label: 'Epicerie' });
+        await expect(this.optionList).toHaveValue('search-alias=grocery');
+        const food = 'pain de mie';
+        await this.searchBar.fill(food);
+        await expect(this.searchBar).toHaveValue(food);
+        await this.buttonSearch.click();
     }
 }

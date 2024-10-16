@@ -44,4 +44,27 @@ test.describe('Connexion test', () => {
     }
     )
 
+    test('Scenario4 : Mail déjà utilisé',
+    {
+        tag : ['@Collab'],
+    },
+    async({ Homepage, Createpage }) => {
+        await test.step('create account with used email', async() => {
+            await Homepage.create();
+            await Createpage.createAlreadyUse();
+        })
+    }
+    )
+
+    test('Sceanario5 : Search product by category',
+    {
+        tag : ['@Collab'],
+    },
+    async({ Homepage, Listproductpage }) => {
+        await test.step('search by category', async() => {
+            await Homepage.selectCatagory();
+            await Listproductpage.viewPage();
+        })
+    }
+    )
 })

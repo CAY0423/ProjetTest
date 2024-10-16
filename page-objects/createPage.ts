@@ -10,6 +10,7 @@ export class CreatePage{
     readonly continueButton : Locator;
     readonly proAccount : Locator;
     readonly cote : Locator;
+    readonly errorEmail : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -20,6 +21,7 @@ export class CreatePage{
         this.continueButton = page.locator('#auth-continue');
         this.proAccount = page.locator('#ab-enhanced-registration-link')
         this.cote = page.locator('#authportal-main-section');
+        this.errorEmail = page.locator('#register-mase-inlineerror .a-box-inner .a-alert-content');
 
     }
 
@@ -36,6 +38,22 @@ export class CreatePage{
         const inputCheckPassValue = await this.inputCheckPass.inputValue();
         await expect(this.inputPass).toHaveValue(inputCheckPassValue);
         await this.continueButton.click();
+    }
+
+    async createAlreadyUse(){
+        const name = faker.person.fullName();
+        const email = 'hadri.delobel62@gmail.com';
+        await this.inputName.fill(name);
+        await expect(this.inputName).toHaveValue(name);
+        await this.inputEmail.fill(email);
+        await expect(this.inputEmail).toHaveValue(email);
+        const password = faker.internet.password();
+        await this.inputPass.fill(password);
+        await this.inputCheckPass.fill(password);
+        const inputCheckPassValue = await this.inputCheckPass.inputValue();
+        await expect(this.inputPass).toHaveValue(inputCheckPassValue);
+        await this.continueButton.click();
+        await expect(this.errorEmail).toHaveText('Il existe déjà un compte associé à cette adresse e-mail. S’identifier ou en savoir plus.');
     }
 
     async createPro(){
