@@ -9,11 +9,12 @@ test.describe('Connexion test', () => {
     {
         tag: ['@collab'],
     },
-    async({ Homepage, Loginpage, Passpage }) => {
+    async({ Homepage, Loginpage, Passpage, Verifpage }) => {
         await test.step('connexion', async() => {
             await Homepage.connexion();
             await Loginpage.connexion();
             await Passpage.connexion();
+            await Verifpage.connexion();
         })
     }
     )

@@ -10,6 +10,7 @@ export class HomePage{
     readonly buttonCategory : Locator;
     readonly buttonSignUp : Locator;
     readonly optionList : Locator;
+    readonly acceptCookie : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -20,18 +21,22 @@ export class HomePage{
         this.buttonCategory = page.locator('#nav-search-dropdown-card');
         this.optionList = page.locator('#searchDropdownBox');
         this.buttonSignUp = page.getByRole('link', { name : 'Commencer ici.' });
+        this.acceptCookie = page.locator('#sp-cc-accept');
     }
 
     async connexion(){
+        await this.acceptCookie.click();
         await this.buttonLog.click();
     }
 
     async create(){
+        //await this.acceptCookie.click();
         await this.buttonLog.blur();
         await this.buttonSignUp.click();
     }
 
     async selectCatagory(){
+        //await this.acceptCookie.click();
         await this.buttonCategory.click();
         await this.optionList.selectOption({ label: 'Epicerie' });
         await expect(this.optionList).toHaveValue('search-alias=grocery');
