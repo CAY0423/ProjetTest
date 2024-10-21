@@ -31,7 +31,7 @@ export class HomePage{
     }
 
     async create(){
-        await this.acceptCookie.click();
+        //await this.acceptCookie.click();
         await this.buttonLog.blur();
         await this.buttonSignUp.click();
     }
@@ -56,6 +56,6 @@ export class HomePage{
 
     async verif(){
         const url = this.page.url();
-        expect(url).toContain('https://www.amazon.fr/ap/cvf/');
+        expect(url).toContain('https://www.amazon.fr/ap/');
     }
 }

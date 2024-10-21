@@ -11,6 +11,7 @@ export class CreatePage{
     readonly proAccount : Locator;
     readonly cote : Locator;
     readonly errorEmail : Locator;
+    readonly errorName : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -22,6 +23,7 @@ export class CreatePage{
         this.proAccount = page.locator('#ab-enhanced-registration-link')
         this.cote = page.locator('#authportal-main-section');
         this.errorEmail = page.locator('#register-mase-inlineerror .a-box-inner .a-alert-content');
+        this.errorName = page.locator('#auth-customerName-missing-alert');
 
     }
 
@@ -58,6 +60,8 @@ export class CreatePage{
 
     async createPro(){
         await this.cote.click();
+        await this.cote.click();
+        await expect(this.errorName).toHaveText('Saisir votre nom')
         await this.proAccount.click();
     }
 }
