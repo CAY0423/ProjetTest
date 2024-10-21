@@ -17,8 +17,9 @@ export class PassPage{
     }
 
     async connexion(){
-        await this.passInput.fill('Hadrigaming62');
-        //await this.resterCoCheck.uncheck({ force : true });
+        const password = "Hadrigaming62";
+        await this.passInput.fill(password);
+        await expect(this.passInput).toHaveValue(password);
         await this.indentifyButton.click();
     }
 }
