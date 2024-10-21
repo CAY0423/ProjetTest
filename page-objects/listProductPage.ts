@@ -12,4 +12,6 @@ export class ListProductPage{
     async viewPage(){
         await this.caseProduit.click();
     }
+
+   
 }

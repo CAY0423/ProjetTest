@@ -10,6 +10,7 @@ export class HomePage{
     readonly buttonCategory : Locator;
     readonly buttonSignUp : Locator;
     readonly optionList : Locator;
+    readonly Biscuits : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -20,8 +21,9 @@ export class HomePage{
         this.buttonCategory = page.locator('#nav-search-dropdown-card');
         this.optionList = page.locator('#searchDropdownBox');
         this.buttonSignUp = page.getByRole('link', { name : 'Commencer ici.' });
+        this.Biscuits = page.getByTitle('Biscuits');
+       
     }
-
     async connexion(){
         await this.buttonLog.click();
     }
@@ -38,6 +40,13 @@ export class HomePage{
         const food = 'pain de mie';
         await this.searchBar.fill(food);
         await expect(this.searchBar).toHaveValue(food);
+        await this.buttonSearch.click();
+    }
+    async selectCatagoryfilter(){
+        await this.buttonCategory.click();
+        await this.optionList.selectOption({ label: 'Epicerie' });
+        await expect(this.optionList).toHaveValue('search-alias=grocery');
+        await this.Biscuits.click()
         await this.buttonSearch.click();
     }
 }

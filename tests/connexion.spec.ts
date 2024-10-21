@@ -67,4 +67,16 @@ test.describe('Connexion test', () => {
         })
     }
     )
+    test('Sceanario6 : Search product by category + filter',
+        {
+            tag : ['@Collab'],
+        },
+        async({ Homepage, Listproductpage }) => {
+            await test.step('search by category', async() => {
+                await Homepage.selectCatagoryfilter();
+                await Listproductpage.viewPage();
+
+            })
+        }
+        )
 })
