@@ -14,7 +14,7 @@ test.describe('Connexion test', () => {
             await Homepage.connexion();
             await Loginpage.connexion();
             await Passpage.connexion();
-            await Verifpage.connexion();
+            await Homepage.verif();
         })
     }
     )
@@ -27,6 +27,7 @@ test.describe('Connexion test', () => {
         await test.step('createParticular', async() => {
             await Homepage.create();
             await Createpage.create();
+            await Homepage.verif();
         })
     }
     )
@@ -35,12 +36,13 @@ test.describe('Connexion test', () => {
     {
         tag : ['@Collab'],
     },
-    async({ Homepage, Createpage, Createpropage, Formpropage }) => {
+    async({ Homepage, Createpage, Createpropage, Formpropage, Businessverif }) => {
         await test.step('create pro account', async() => {
             await Homepage.create();
             await Createpage.createPro();
             await Createpropage.create();
             await Formpropage.create();
+            await Businessverif.verif();
         })
     }
     )

@@ -7,6 +7,7 @@ import { CreateProPage } from '../page-objects/createProPage';
 import { FormProPage } from '../page-objects/formProPage';
 import { ListProductPage } from '../page-objects/listProductPage';
 import { VerifPage } from '../page-objects/verifPage';
+import { BusinessVerif } from '../page-objects/businessVerif';
 
 const test = base.extend({
     Homepage : async({page}, use) => {
@@ -33,6 +34,9 @@ const test = base.extend({
     Verifpage : async({page}, use) => {
         await use(new VerifPage(page));
     },
+    Businessverif : async({page}, use) => {
+        await use(new BusinessVerif(page));
+    }
 })
 
 const expect = base.expect;

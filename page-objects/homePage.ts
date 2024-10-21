@@ -10,11 +10,8 @@ export class HomePage{
     readonly buttonCategory : Locator;
     readonly buttonSignUp : Locator;
     readonly optionList : Locator;
-<<<<<<< HEAD
-    readonly Biscuits : Locator;
-=======
     readonly acceptCookie : Locator;
->>>>>>> 7626d53f19ce5a4a9138a8636ac8e7bd6c61ee82
+    readonly Biscuits : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -25,12 +22,8 @@ export class HomePage{
         this.buttonCategory = page.locator('#nav-search-dropdown-card');
         this.optionList = page.locator('#searchDropdownBox');
         this.buttonSignUp = page.getByRole('link', { name : 'Commencer ici.' });
-<<<<<<< HEAD
         this.Biscuits = page.getByTitle('Biscuits');
-       
-=======
         this.acceptCookie = page.locator('#sp-cc-accept');
->>>>>>> 7626d53f19ce5a4a9138a8636ac8e7bd6c61ee82
     }
     async connexion(){
         await this.acceptCookie.click();
@@ -38,13 +31,13 @@ export class HomePage{
     }
 
     async create(){
-        //await this.acceptCookie.click();
+        await this.acceptCookie.click();
         await this.buttonLog.blur();
         await this.buttonSignUp.click();
     }
 
     async selectCatagory(){
-        //await this.acceptCookie.click();
+        await this.acceptCookie.click();
         await this.buttonCategory.click();
         await this.optionList.selectOption({ label: 'Epicerie' });
         await expect(this.optionList).toHaveValue('search-alias=grocery');
@@ -59,5 +52,10 @@ export class HomePage{
         await expect(this.optionList).toHaveValue('search-alias=grocery');
         await this.Biscuits.click()
         await this.buttonSearch.click();
+    }
+
+    async verif(){
+        const url = this.page.url();
+        expect(url).toContain('https://www.amazon.fr/ap/cvf/');
     }
 }
