@@ -61,8 +61,4 @@ export class HomePage{
         expect(url).toContain('https://www.amazon.fr/ap/');
     }
 
-    async verif(){
-        const url = this.page.url();
-        expect(url).toContain('https://www.amazon.fr/ap/');
-    }
 }
