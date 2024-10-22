@@ -1,5 +1,6 @@
 import { test } from "../locator/fixtures";
 
+
 test.describe('Connexion test', () => {
     test.beforeEach(async({ page }) => {
         await page.goto('https://www.amazon.fr/');
@@ -72,12 +73,14 @@ test.describe('Connexion test', () => {
         {
             tag : ['@Collab'],
         },
-        async({ Homepage, Listproductpage }) => {
+        async({ Homepage, Interbiscuits, Listbiscuits, InterSnacks }) => {
             await test.step('search by category', async() => {
                 await Homepage.selectCatagoryfilter();
-                await Listproductpage.viewPage();
+                await InterSnacks.viewPage();
+                await Interbiscuits.viewPage();
+                await Listbiscuits.viewPage();
 
-            })
+            }) 
         }
         )
 })

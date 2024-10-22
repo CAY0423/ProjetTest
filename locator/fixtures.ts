@@ -7,6 +7,9 @@ import { CreateProPage } from '../page-objects/createProPage';
 import { FormProPage } from '../page-objects/formProPage';
 import { ListProductPage } from '../page-objects/listProductPage';
 import { VerifPage } from '../page-objects/verifPage';
+import { interBiscuits } from '../page-objects/interBiscuits';
+import { ListBiscuits } from '../page-objects/listBiscuits';
+import { InterSnacks } from '../page-objects/interSnacks';
 
 const test = base.extend({
     Homepage : async({page}, use) => {
@@ -33,6 +36,15 @@ const test = base.extend({
     Verifpage : async({page}, use) => {
         await use(new VerifPage(page));
     },
+    Interbiscuits:async({page}, use) => {
+        await use(new interBiscuits(page));
+    },
+    Listbiscuits:async({page}, use)  => {
+        await use(new ListBiscuits(page))
+    },
+    Intersnacks:async({page}, use)  => {
+        await use(new InterSnacks(page))
+    }
 })
 
 const expect = base.expect;
