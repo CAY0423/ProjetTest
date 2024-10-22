@@ -10,8 +10,8 @@ export class HomePage{
     readonly buttonCategory : Locator;
     readonly buttonSignUp : Locator;
     readonly optionList : Locator;
-    
     readonly acceptCookie : Locator;
+    readonly Biscuits : Locator;
 
     constructor(page : Page){
         this.page = page;
@@ -22,8 +22,7 @@ export class HomePage{
         this.buttonCategory = page.locator('#nav-search-dropdown-card');
         this.optionList = page.locator('#searchDropdownBox');
         this.buttonSignUp = page.getByRole('link', { name : 'Commencer ici.' });
-        
-       
+        this.Biscuits = page.getByTitle('Biscuits');
         this.acceptCookie = page.locator('#sp-cc-accept');
     }
     async connexion(){
@@ -38,7 +37,7 @@ export class HomePage{
     }
 
     async selectCatagory(){
-        //await this.acceptCookie.click();
+        await this.acceptCookie.click();
         await this.buttonCategory.click();
         await this.optionList.selectOption({ label: 'Epicerie' });
         await expect(this.optionList).toHaveValue('search-alias=grocery');
@@ -55,5 +54,15 @@ export class HomePage{
         await this.buttonSearch.click();
         
         
+    }
+
+    async verif(){
+        const url = this.page.url();
+        expect(url).toContain('https://www.amazon.fr/ap/');
+    }
+
+    async verif(){
+        const url = this.page.url();
+        expect(url).toContain('https://www.amazon.fr/ap/');
     }
 }
