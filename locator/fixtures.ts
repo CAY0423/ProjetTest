@@ -11,6 +11,7 @@ import { BusinessVerif } from '../page-objects/businessVerif';
 import { interBiscuits } from '../page-objects/interBiscuits';
 import { ListBiscuits } from '../page-objects/listBiscuits';
 import { InterSnacks } from '../page-objects/interSnacks';
+import { ProductPage } from '../page-objects/productPage';
 
 const test = base.extend({
     Homepage: async ({ page }, use) => {
@@ -38,17 +39,20 @@ const test = base.extend({
         await use(new VerifPage(page));
     },
     Businessverif: async ({ page }, use) => {
-        await use(new BusinessVerif(page));  // Assure-toi que BusinessVerif est bien défini
+        await use(new BusinessVerif(page));
     },
     Interbiscuits: async ({ page }, use) => {
-        await use(new interBiscuits(page));  // Assure-toi que interBiscuits est bien défini
+        await use(new interBiscuits(page)); 
     },
     Listbiscuits: async ({ page }, use) => {
-        await use(new ListBiscuits(page));  // Assure-toi que ListBiscuits est bien défini
+        await use(new ListBiscuits(page));  
     },
     InterSnacks: async ({ page }, use) => {
-        await use(new InterSnacks(page));  // Assure-toi que InterSnacks est bien défini
+        await use(new InterSnacks(page));
     },
+    ProductPage: async ({page}, use) => {
+        await use(new ProductPage(page));
+    }
 });
 
 const expect = base.expect;

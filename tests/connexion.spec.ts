@@ -85,4 +85,17 @@ test.describe('Connexion test', () => {
             }) 
         }
         )
+    test('Sceanario7 : Add product to cart',
+        {
+            tag : ['@Collab'],
+        },
+        async({ Homepage, Listproductpage, ProductPage, page }) => {
+            await test.step('Search product', async ()=> {
+                await Homepage.selectCatagory();
+                await Listproductpage.viewPage();
+                await ProductPage.addToCart();
+                await page.waitForTimeout(1000);
+            })
+        }
+        )
 })
