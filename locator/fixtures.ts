@@ -13,31 +13,43 @@ import { ListBiscuits } from '../page-objects/listBiscuits';
 import { InterSnacks } from '../page-objects/interSnacks';
 
 const test = base.extend({
-    Homepage : async({page}, use) => {
+    Homepage: async ({ page }, use) => {
         await use(new HomePage(page));
     },
-    Loginpage : async({page}, use) => {
+    Loginpage: async ({ page }, use) => {
         await use(new LoginPage(page));
     },
-    Passpage : async({page}, use) => {
+    Passpage: async ({ page }, use) => {
         await use(new PassPage(page));
     },
-    Createpage : async({page}, use) => {
+    Createpage: async ({ page }, use) => {
         await use(new CreatePage(page));
     },
-    Createpropage : async({page}, use) => {
+    Createpropage: async ({ page }, use) => {
         await use(new CreateProPage(page));
     },
-    Formpropage : async({page}, use) => {
+    Formpropage: async ({ page }, use) => {
         await use(new FormProPage(page));
     },
-    Listproductpage : async({page}, use) => {
+    Listproductpage: async ({ page }, use) => {
         await use(new ListProductPage(page));
     },
-    Verifpage : async({page}, use) => {
+    Verifpage: async ({ page }, use) => {
         await use(new VerifPage(page));
     },
-})
+    Businessverif: async ({ page }, use) => {
+        await use(new BusinessVerif(page));  // Assure-toi que BusinessVerif est bien défini
+    },
+    Interbiscuits: async ({ page }, use) => {
+        await use(new interBiscuits(page));  // Assure-toi que interBiscuits est bien défini
+    },
+    Listbiscuits: async ({ page }, use) => {
+        await use(new ListBiscuits(page));  // Assure-toi que ListBiscuits est bien défini
+    },
+    InterSnacks: async ({ page }, use) => {
+        await use(new InterSnacks(page));  // Assure-toi que InterSnacks est bien défini
+    },
+});
 
 const expect = base.expect;
 export {expect, test};
