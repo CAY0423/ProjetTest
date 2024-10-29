@@ -37,7 +37,7 @@ export class HomePage{
     }
 
     async selectCatagory(){
-        await this.acceptCookie.click();
+        //await this.acceptCookie.click();
         await this.buttonCategory.click();
         await this.optionList.selectOption({ label: 'Epicerie' });
         await expect(this.optionList).toHaveValue('search-alias=grocery');

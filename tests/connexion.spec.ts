@@ -89,11 +89,35 @@ test.describe('Connexion test', () => {
         {
             tag : ['@Collab'],
         },
-        async({ Homepage, Listproductpage, ProductPage, page }) => {
+        async({ Homepage, Listproductpage, ProductPage, page,Loginpage,Passpage }) => {
             await test.step('Search product', async ()=> {
+                //S'identifier 
+                await Homepage.connexion();
+                await Loginpage.connexion();
+                await Passpage.connexion();
+                await Homepage.verif();
+                //Add product to cart
                 await Homepage.selectCatagory();
                 await Listproductpage.viewPage();
                 await ProductPage.addToCart();
+                await page.waitForTimeout(1000);
+            })
+        }
+        )
+    test('Sceanario8 : Remove product to cart',
+        {
+            tag : ['@Collab'],
+        },
+        async({ Homepage, ProductPage, page,Loginpage,Passpage }) => {
+            await test.step('Search product', async ()=> {
+                //S'identifier 
+                await Homepage.connexion();
+                await Loginpage.connexion();
+                await Passpage.connexion();
+                await Homepage.verif();
+                await ProductPage.goToCart();
+                //Delete product à condition d'avoir réalisé le test d'add product
+                await ProductPage.deleteProduct();
                 await page.waitForTimeout(1000);
             })
         }
