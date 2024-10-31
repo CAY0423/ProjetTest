@@ -9,7 +9,7 @@ import { ListProductPage } from '../page-objects/listProductPage';
 import { VerifPage } from '../page-objects/verifPage';
 import { BusinessVerif } from '../page-objects/businessVerif';
 import { interBiscuits } from '../page-objects/interBiscuits';
-import { ListBiscuits } from '../page-objects/listBiscuits';
+import { ListSnacks } from '../page-objects/listSnacks';
 import { InterSnacks } from '../page-objects/interSnacks';
 import { ProductPage } from '../page-objects/productPage';
 import { CartPage } from '../page-objects/cartPage';
@@ -46,8 +46,8 @@ const test = base.extend({
     Interbiscuits: async ({ page }, use) => {
         await use(new interBiscuits(page)); 
     },
-    Listbiscuits: async ({ page }, use) => {
-        await use(new ListBiscuits(page));  
+    Listsnacks: async ({ page }, use) => {
+        await use(new ListSnacks(page));  
     },
     InterSnacks: async ({ page }, use) => {
         await use(new InterSnacks(page));

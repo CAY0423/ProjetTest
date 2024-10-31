@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
 
-export class ListBiscuits{
+export class ListSnacks{
     readonly page : Page;
     readonly filtreEtoile : Locator;
     
