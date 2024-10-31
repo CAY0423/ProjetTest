@@ -122,4 +122,24 @@ test.describe('Connexion test', () => {
             })
         }
         )
+
+        test('Scenario9 : order with an account creation in the checkout',
+            {
+                tag: ['@collab'],
+            },
+            async({ Homepage, Listproductpage, ProductPage, page, Createpage, CartPage, SigninPage }) => {
+                await test.step('Search product', async ()=> {
+                    //Add product to cart
+                    await Homepage.acceptCookie.click();
+                    await Homepage.selectCatagory();
+                    await Listproductpage.viewPage();
+                    await ProductPage.addToCart();
+                    await ProductPage.goToCart();
+                    await CartPage.Pay();
+                    await SigninPage.GoCreateAccount();
+                    await Createpage.create();
+                    await page.waitForTimeout(1000);
+                })
+            }
+            )
 })

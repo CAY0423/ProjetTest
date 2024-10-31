@@ -12,6 +12,8 @@ import { interBiscuits } from '../page-objects/interBiscuits';
 import { ListBiscuits } from '../page-objects/listBiscuits';
 import { InterSnacks } from '../page-objects/interSnacks';
 import { ProductPage } from '../page-objects/productPage';
+import { CartPage } from '../page-objects/cartPage';
+import { SigninPage } from '../page-objects/signinPage';
 
 const test = base.extend({
     Homepage: async ({ page }, use) => {
@@ -52,6 +54,12 @@ const test = base.extend({
     },
     ProductPage: async ({page}, use) => {
         await use(new ProductPage(page));
+    },
+    CartPage: async ({page}, use) => {
+        await use(new CartPage(page));
+    },
+    SigninPage: async ({page}, use) => {
+        await use(new SigninPage(page));
     }
 });
 

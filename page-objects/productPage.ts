@@ -17,7 +17,7 @@ export class ProductPage {
     }
 
     async addToCart() {
-        await this.uneLivraison.click();
+        //await this.uneLivraison.click();
         await this.addToCartButton.click(); 
     }
 
