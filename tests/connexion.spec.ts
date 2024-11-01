@@ -143,3 +143,22 @@ test.describe('Connexion test', () => {
             }
             )
 })
+
+test.describe('Checkout Process', () => {
+    test.beforeEach(async ({ CartPage }) => {
+        await CartPage.navigateToCheckout();
+    });
+
+    test('Buy an Article from cart', async ({ CartPage }){
+        await CartPage.selectShippingAddress();
+        await CartPage.selectPaymentMethod('Credit Card');
+        await CartPage.enterCardDetails({
+            cardNumber: '4111111111111111',
+            expirationDate: '12/25',
+            cvv: '123'
+        });
+        await CartPage.clickConfirmButton();
+        await expect(CartPage.confirmationMessage).toBeVisible();
+        await expect(CartPage.confirmationEmail).toBeVisible();
+    });
+});
