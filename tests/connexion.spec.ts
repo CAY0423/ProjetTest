@@ -145,7 +145,12 @@ test.describe('Connexion test', () => {
 })
 
 test.describe('Checkout Process', () => {
-    test.beforeEach(async ({ CartPage }) => {
+    test.beforeEach(async ({ CartPage, Homepage, Loginpage, Passpage, ProductPage }) => {
+        await Homepage.connexion();
+        await Loginpage.connexion();
+        await Passpage.connexion();
+        await Homepage.verif();
+        await ProductPage.goToCart();
         await CartPage.navigateToCheckout();
     });
 
