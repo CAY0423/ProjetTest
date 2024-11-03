@@ -42,6 +42,6 @@ export class CartPage {
     }
 
     async clickConfirmButton() {
-        await this.page.click(''); 
+        await this.page.click('#turbo-checkout-pyo-button'); 
     }
 
