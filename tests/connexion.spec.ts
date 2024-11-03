@@ -168,4 +168,16 @@ test.describe('Checkout Process', () => {
         });
         await CartPage.clickConfirmButton();
     });
+     test('Scenario11: Modify item quantity in the cart', 
+    {
+        tag: ['@collab'],
+    }, 
+    async ({ CartPage, Homepage, Loginpage, Passpage, Productpage }) => {
+        await Homepage.connexion();
+        await Loginpage.connexion();
+        await Passpage.connexion();
+        await Homepage.verif();
+        await ProductPage.goToCart();
+        await CartPage.changeItemQuantity('2');
+    });
 });
