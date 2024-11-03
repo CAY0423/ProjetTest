@@ -154,7 +154,11 @@ test.describe('Checkout Process', () => {
         await CartPage.navigateToCheckout();
     });
 
-    test('Buy an Article from cart', async ({ CartPage }){
+    test('Scénario 10 :Buy an Article from cart',
+         {
+             tag: ['@collab'],
+         },
+        async ({ CartPage }){
         await CartPage.selectShippingAddress();
         await CartPage.selectPaymentMethod('Credit Card');
         await CartPage.enterCardDetails({
