@@ -42,6 +42,6 @@ export class CartPage {
     }
 
     async clickConfirmButton() {
-        await this.page.click('#bottomSubmitOrderButtonId'); 
+        await this.page.click(''); 
     }
 
